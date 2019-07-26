@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Definition of a Monitor",
+            "type": "object",
+            "properties": {
+                "configuration": {
+                    "description": "PropertyMap is used as container for additional data in alarms or messages\nit can be stored and retrieved easily in our Postgres database",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "x-go-package": "groupalarm.com/go/common"
+                },
+                "id": {
+                    "description": "The internal ID of the Monitor",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "ID"
+                },
+                "name": {
+                    "description": "The name of the Monitor that is displayed in the UI",
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "organizationID": {
+                    "description": "The organization the Monitor is part of",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "OrganizationID"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/monitor/api/services"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "monitor_id": {
+            "required": true,
+            "type": "integer"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "latestAlarms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "pagers": {
+                    "type": "object",
+                    "properties": {
+                        "activePager": {
+                            "type": "integer"
+                        },
+                        "inactivePager": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "latestAlarms": [
+                    "Brand in Aachen",
+                    "Unfall auf der Autobahn A4"
+                ],
+                "pagers": {
+                    "activePager": 10,
+                    "inactivePager": 0
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,134 @@
+{
+    "type": "object",
+    "properties": {
+        "monitor_id": {
+            "required": true,
+            "type": "integer"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "awaitingResponses": {
+                    "type": "integer"
+                },
+                "event": {
+                    "type": "string"
+                },
+                "geo": {
+                    "type": "object",
+                    "properties": {
+                        "address": {
+                            "type": "string"
+                        },
+                        "latitude": {
+                            "type": "integer"
+                        },
+                        "longitude": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string"
+                },
+                "negativeResponses": {
+                    "type": "integer"
+                },
+                "positiveResponses": {
+                    "type": "integer"
+                },
+                "units": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "feedback": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "feedback": {
+                                            "description": "Feedback of the user:\n * 0 - Negative feedback\n * 1 - Positive feedback\n * 2 - Waiting for feedback\n",
+                                            "type": "number",
+                                            "enum": [
+                                                0,
+                                                1,
+                                                2
+                                            ]
+                                        },
+                                        "label": {
+                                            "type": "object",
+                                            "properties": {
+                                                "color": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "position": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "example": {
+                "awaitingResponses": 20,
+                "event": "Brand in der Goethestraße",
+                "geo": {
+                    "address": "Goethestraße 5, 52064 Aachen, Deutschland",
+                    "latitude": 50.77664,
+                    "longitude": 6.08342
+                },
+                "message": "Großbrand in der Goethestraße 5",
+                "negativeResponses": 1,
+                "positiveResponses": 2,
+                "units": [
+                    {
+                        "feedback": [
+                            {
+                                "feedback": 1,
+                                "label": {
+                                    "color": null,
+                                    "name": "AGT"
+                                },
+                                "name": "Hans Peter",
+                                "position": "AGT"
+                            },
+                            {
+                                "feedback": 1,
+                                "label": {
+                                    "color": null,
+                                    "name": "AGT"
+                                },
+                                "name": "Karl Blau",
+                                "position": "AGT"
+                            },
+                            {
+                                "feedback": 2,
+                                "label": {
+                                    "color": null,
+                                    "name": "Helfer"
+                                },
+                                "name": "Jörg Schwarz",
+                                "position": "Helfer"
+                            }
+                        ],
+                        "name": "Einheit 1"
+                    }
+                ]
+            }
+        }
+    }
+}

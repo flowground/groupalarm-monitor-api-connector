@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+        "monitor_id": {
+            "required": true,
+            "type": "integer"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "latestAlarms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "pagers": {
+                    "type": "object",
+                    "properties": {
+                        "activePager": {
+                            "type": "integer"
+                        },
+                        "inactivePager": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "pagers": {
+                    "activePager": 5
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,214 @@
+{
+    "title": "groupalarm Monitor API",
+    "description": "The monitor service implements all monitor functions for GroupAlarm\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
+    "docsUrl": "",
+    "url": "https://app.groupalarm.com/api/v1/monitor",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://app.groupalarm.com/api/v1/monitor",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_API_Token": {
+                "label": "API-TOKEN (API_Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need an API-Token from the RBAC settings of your GroupAlarm organization. Place the token inside the HTTP-Header `API-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            },
+            "auth_Personal-Access-Token": {
+                "label": "Personal-Access-Token (Personal-Access-Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need a Personal Access Token from your profile settings. Place the token inside the HTTP-Header `Personal-Access-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ListMonitors": {
+            "main": "./lib/actions/ListMonitors.js",
+            "title": "ListMonitors",
+            "description": "Returns all monitors for the given organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListMonitors.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EditMonitor": {
+            "main": "./lib/actions/EditMonitor.js",
+            "title": "EditMonitor",
+            "description": "Updates a given monitor with new values",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EditMonitor.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateMonitor": {
+            "main": "./lib/actions/CreateMonitor.js",
+            "title": "CreateMonitor",
+            "description": "Creates a new Monitor",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateMonitor.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetMonitor": {
+            "main": "./lib/actions/GetMonitor.js",
+            "title": "GetMonitor",
+            "description": "Returns the Monitor for the given Monitor-ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetMonitor.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteMonitor": {
+            "main": "./lib/actions/DeleteMonitor.js",
+            "title": "DeleteMonitor",
+            "description": "Deletes the given monitor by ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteMonitor.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetMonitorData": {
+            "main": "./lib/actions/GetMonitorData.js",
+            "title": "GetMonitorData",
+            "description": "Returns all data for a given monitor",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetMonitorData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SetMonitorDataAlarming": {
+            "main": "./lib/actions/SetMonitorDataAlarming.js",
+            "title": "SetMonitorDataAlarming",
+            "description": "Create or overwrites the monitor alarming data",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SetMonitorDataAlarming.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateMonitorDataAlarming": {
+            "main": "./lib/actions/UpdateMonitorDataAlarming.js",
+            "title": "UpdateMonitorDataAlarming",
+            "description": "Patches one or more field from the monitor alarming data",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateMonitorDataAlarming.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SetMonitorDataMeta": {
+            "main": "./lib/actions/SetMonitorDataMeta.js",
+            "title": "SetMonitorDataMeta",
+            "description": "Create or overwrites the monitor meta data",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SetMonitorDataMeta.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateMonitorDataMeta": {
+            "main": "./lib/actions/UpdateMonitorDataMeta.js",
+            "title": "UpdateMonitorDataMeta",
+            "description": "Patches one or more field from the monitor meta data",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateMonitorDataMeta.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
